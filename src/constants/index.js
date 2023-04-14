@@ -217,7 +217,7 @@ const projects = [
       },
     ],
     image: applestore,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/AzharH1/AppleWebsite",
   },
   {
     name: "Discord Clone",
@@ -238,7 +238,7 @@ const projects = [
       },
     ],
     image: discord,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/AzharH1/DiscordClone",
   },
   {
     name: "Twitter Clone",
@@ -259,7 +259,7 @@ const projects = [
       },
     ],
     image: twitter,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/AzharH1/Twitter-Clone",
   },
 ];
 
