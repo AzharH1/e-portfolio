@@ -47,7 +47,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I am a proactive second-year computer science student at the University of Sydney, where my passion for cloud development and cyber-security has been nurtured and reinforced. I have developed my own website using cutting-edge technologies like React, TailwindCSS, Node.js, and Three.js, which demonstrates my capabilities in creating visually engaging, responsive web designs and integrating 3D graphics seamlessly. <br/> <br/> As a fast learner, I can rapidly adapt to new tools and methodologies, allowing me to work closely with clients to develop efficient, scalable, and user-centric solutions. Presently, I am focused on spinning up cloud instances and designing visually stunning, responsive websites that cater to various audiences while providing immersive 3D experiences. My primary expertise lies in frontend technologies, such as HTML, CSS, and JavaScript, and I am proficient in backend development using Java and Node.js.
+        As a proactive penultimate computer science student at the University of Sydney, I excel in cloud development and cybersecurity. I've built a responsive website using React, TailwindCSS, Node.js, and Three.js, demonstrating my adaptability and skill in frontend and backend technologies. I specialize in creating visually captivating, responsive websites with immersive 3D experiences.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

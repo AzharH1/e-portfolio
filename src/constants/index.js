@@ -117,16 +117,16 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Fruit & Veg Team Member",
-    company_name: "Woolworths",
-    icon: WoolworthsD,
+    title: "Frontend Developer Internship ",
+    company_name: "Frontend Simplified",
+    icon: frontend,
     iconBg: "#383E56",
-    date: "Jan 2022 - Present",
+    date: "Jan 2023 - April 2023",
     points: [
-      "Coordinated restocking of sales floor with current merchandise and accurate signage for current promotions.",
-      "Approached browsing customers to initiate conversations to determine buying preferences.",
-      "Circulated assigned areas of sales floor to identify customer service opportunities and coordinate display maintenance.",
-      "Approached each problem with analytical strategies to quickly resolve concerns.",
+      "Transformed a completely static HTML, CSS, JavaScript and React single page application into an interactive user interface using animations, transitions and carousels",
+      "Processed API requests with Axios to dynamically represent data from a cloud server and represented it through skeleton loading states, pagination and dynamic routing.",
+      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Utilized Git version control and the GitHub interface to work and thrive in a virtual and collaborative team environment",
     ],
   },
   {
@@ -143,18 +143,19 @@ const experiences = [
     ],
   },
   {
-    title: "Frontend Developer Internship ",
-    company_name: "Frontend Simplified",
-    icon: frontend,
+    title: "Fruit & Veg Team Member",
+    company_name: "Woolworths",
+    icon: WoolworthsD,
     iconBg: "#383E56",
-    date: "Jan 2023 - April 2023",
+    date: "Jan 2022 - Present",
     points: [
-      "Transformed a completely static HTML, CSS, JavaScript and React single page application into an interactive user interface using animations, transitions and carousels",
-      "Processed API requests with Axios to dynamically represent data from a cloud server and represented it through skeleton loading states, pagination and dynamic routing.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Utilized Git version control and the GitHub interface to work and thrive in a virtual and collaborative team environment",
+      "Coordinated restocking of sales floor with current merchandise and accurate signage for current promotions.",
+      "Approached browsing customers to initiate conversations to determine buying preferences.",
+      "Circulated assigned areas of sales floor to identify customer service opportunities and coordinate display maintenance.",
+      "Approached each problem with analytical strategies to quickly resolve concerns.",
     ],
   },
+
   // {
   //   title: "Full stack Developer",
   //   company_name: "Meta",
