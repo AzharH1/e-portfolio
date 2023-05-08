@@ -24,7 +24,7 @@ const Tech = () => {
 
   return (
     <div className='flex flex-row flex-wrap justify-center gap-10'>
-      { isMobile ? (technologies.slice(0, Math.floor(technologies.length/2 -1))).map((technology) => (
+      { isMobile ? (technologies.slice(0, 2)).map((technology) => (
         TheTechBalls(technology)
       )) : technologies.map(technology => (TheTechBalls(technology)))}
     </div>
