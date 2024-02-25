@@ -22,9 +22,10 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
 import meta from "./company/meta.png";
-import frontend from "./company/frontend.png";
+import frontendSimplified from "./company/frontendSimplified.png";
 import WoolworthsD from "./company/WoolworthsD.png";
 import jbhifi from "./company/jbhifi3.png";
+import canvaLogo from "./company/circleCanvaLogoGradient.svg";
 
 import applestore from "./applestore.png";
 import discord from "./discord.png";
@@ -53,7 +54,8 @@ export {
   typescript,
   threejs,
   meta,
-  frontend,
+  canvaLogo,
+  frontendSimplified,
   WoolworthsD,
   jbhifi,
   applestore,

@@ -18,12 +18,12 @@ import {
   meta,
   WoolworthsD,
   jbhifi,
-  frontend,
+  frontendSimplified,
+  canvaLogo,
   applestore,
   discord,
   twitter,
   threejs,
-
 } from "../assets";
 
 export const navLinks = [
@@ -43,7 +43,7 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
+    title: "Frontend Engineer",
     icon: web,
   },
   {
@@ -51,7 +51,7 @@ const services = [
     icon: mobile,
   },
   {
-    title: "Backend Developer",
+    title: "Backend Engineer",
     icon: backend,
   },
   {
@@ -117,10 +117,24 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Frontend Developer Internship ",
-    company_name: "Frontend Simplified",
-    icon: frontend,
+    title: "Software Engineer Internship",
+    company_name: "Canva",
+    icon: canvaLogo,
     iconBg: "#383E56",
+    date: "December 2023 - February 2024",
+    points: [
+      "Developed tools to investigate optimisation techniques to boost service worker operation, leading to enhanced performance and user experience",
+      "Provided better user experience by effectively redirecting requests to the cache or backend through the interception of network proxy requests by service workers",
+      "Leveraged RxJS for asynchronous programming, particularly for coordinating and managing events from service workers and the browser",
+      "Utilised React to create Chrome extensions and overlays for providing critical utilities and information to internal teams",
+      "Identified limitations and challenges in service worker management within the extension and created strategies to mitigate restrictions and enable functionality expansion in future iterations",
+    ],
+  },
+  {
+    title: "Frontend Engineer Internship ",
+    company_name: "Frontend Simplified",
+    icon: frontendSimplified,
+    iconBg: "#E6DEDD",
     date: "Jan 2023 - April 2023",
     points: [
       "Transformed a completely static HTML, CSS, JavaScript and React single page application into an interactive user interface using animations, transitions and carousels",
@@ -143,7 +157,7 @@ const experiences = [
     ],
   },
   {
-    title: "Fruit & Veg Team Member",
+    title: "Store Team Member",
     company_name: "Woolworths",
     icon: WoolworthsD,
     iconBg: "#383E56",
@@ -155,20 +169,6 @@ const experiences = [
       "Approached each problem with analytical strategies to quickly resolve concerns.",
     ],
   },
-
-  // {
-  //   title: "Full stack Developer",
-  //   company_name: "Meta",
-  //   icon: meta,
-  //   iconBg: "#E6DEDD",
-  //   date: "Jan 2023 - Present",
-  //   points: [
-  //     "Developing and maintaining web applications using React.js and other related technologies.",
-  //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-  //     "Implementing responsive design and ensuring cross-browser compatibility.",
-  //     "Participating in code reviews and providing constructive feedback to other developers.",
-  //   ],
-  // },
 ];
 
 const testimonials = [
