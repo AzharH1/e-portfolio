@@ -29,6 +29,7 @@ import canvaLogo from "./company/circleCanvaLogoGradient.svg";
 
 import applestore from "./applestore.png";
 import discord from "./discord.png";
+import fullStack from "./fullstack.png";
 import twitter from "./twitter.png";
 
 export {
@@ -60,5 +61,6 @@ export {
   jbhifi,
   applestore,
   discord,
+  fullStack,
   twitter,
 };

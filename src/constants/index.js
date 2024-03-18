@@ -22,6 +22,7 @@ import {
   canvaLogo,
   applestore,
   discord,
+  fullStack,
   twitter,
   threejs,
 } from "../assets";
@@ -200,6 +201,31 @@ const testimonials = [
 
 const projects = [
   {
+    name: "FullStack JWT ",
+    description:
+      "Developed a full-stack application emulating a secure, dynamic user experience, incorporating Spring Boot for robust backend services, and Next.js with TypeScript for a responsive frontend. Integrated JWTs for authentication, PostgreSQL for data persistence, and Docker for seamless deployment and scalability, crafting a comprehensive and reliable system architecture.",
+    tags: [
+      {
+        name: "NextJS",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SpringBoot",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Docker",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "PostgresQl",
+        color: "orange-text-gradient",
+      },
+    ],
+    image: fullStack,
+    source_code_link: "https://github.com/AzharH1/AzSecurity",
+  },
+  {
     name: "Apple Store",
     description:
       "Created an e-commerce platform mirroring the Apple Store experience, showcasing product catalogues using Sanity, shopping cart functionality, and a secure checkout process using Stripe. Implemented responsive design and smooth navigation, utilizing React, Tailwind and Typescript to create an intuitively appealing experience.",
@@ -219,27 +245,6 @@ const projects = [
     ],
     image: applestore,
     source_code_link: "https://github.com/AzharH1/AppleWebsite",
-  },
-  {
-    name: "Discord Clone",
-    description:
-      "Developed a real-time communication platform inspired by Discord, offering text chat capabilities, server and channel management in a user-friendly interface, leveraging react, redux and JavaScript.",
-    tags: [
-      {
-        name: "React",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Firebase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "TailWindCSS",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: discord,
-    source_code_link: "https://github.com/AzharH1/DiscordClone",
   },
   {
     name: "Twitter Clone",
