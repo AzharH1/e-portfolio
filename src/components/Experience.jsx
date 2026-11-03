@@ -102,7 +102,7 @@ const Experience = () => {
   }, []);
   return (
     <>
-      <div>
+      <div id="work" className="section-intro">
         <p className={`${styles.sectionSubText} text-center`}>
           What I have done so far
         </p>
@@ -123,4 +123,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Experience);

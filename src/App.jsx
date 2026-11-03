@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 
-import { lazy } from "react";
+import { lazy, useLayoutEffect } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
@@ -12,6 +12,17 @@ import DeferredScene from "./components/DeferredScene";
 const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const App = () => {
+  useLayoutEffect(() => {
+    const hash = window.location.hash;
+    if (hash !== "#about" && hash !== "#work") return;
+    // On a direct visit the browser can look for the fragment before React mounts.
+    const frame = requestAnimationFrame(() => {
+      if (window.location.hash === hash) {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "instant" });
+      }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
   return (
     <BrowserRouter>
       <div className='relative z-0 bg-primary'>

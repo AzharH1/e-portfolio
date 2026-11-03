@@ -66,20 +66,9 @@ const ServiceCard = ({ index, title, icon }) => {
 };
 
 const About = () => {
-  const introduction = useRef(null);
-  useLayoutEffect(() => {
-    if (window.location.hash !== "#about") return;
-    // The fragment target does not exist until React mounts the page.
-    const frame = requestAnimationFrame(() => {
-      if (window.location.hash === "#about") {
-        introduction.current?.scrollIntoView({ block: "start", behavior: "instant" });
-      }
-    });
-    return () => cancelAnimationFrame(frame);
-  }, []);
   return (
     <>
-      <div ref={introduction} id="about" className="scroll-mt-[100px] sm:scroll-mt-[92px]">
+      <div id="about" className="section-intro">
         <p className={styles.sectionSubText}>Introduction</p>
         <AnimatedHeading variant="overview">Overview.</AnimatedHeading>
       </div>
