@@ -206,3 +206,23 @@
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto; }
 }
+
+.experience-timeline .vertical-timeline::before {
+  background: #354A44;
+}
+.experience-timeline .vertical-timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #67DDB5;
+  transform: scaleY(var(--line-progress, 1));
+  transform-origin: top;
+  pointer-events: none;
+}
+.experience-timeline .vertical-timeline-element { z-index: 1; }
+@media (min-width: 1170px) {
+  .experience-timeline .vertical-timeline::after { left: 50%; margin-left: -2px; }
+}

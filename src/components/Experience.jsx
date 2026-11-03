@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -63,6 +67,24 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
+  const timelineRoot = useRef();
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const timeline = timelineRoot.current.querySelector(".vertical-timeline");
+      gsap.fromTo(timeline, { "--line-progress": 0 }, {
+        "--line-progress": 1, ease: "none",
+        scrollTrigger: { trigger: timeline, start: "top 65%", end: "bottom 65%", scrub: true, invalidateOnRefresh: true },
+      });
+      timeline.querySelectorAll(".vertical-timeline-element-icon").forEach((icon) => {
+        gsap.fromTo(icon, { boxShadow: "0 0 0 4px #354A44" }, {
+          boxShadow: "0 0 0 4px #67DDB5, 0 0 24px #67DDB540", duration: 0.35,
+          scrollTrigger: { trigger: icon, start: "top 65%", toggleActions: "play none none reverse" },
+        });
+      });
+    });
+    return () => media.revert();
+  }, []);
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -74,8 +96,8 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      <div className='mt-20 flex flex-col'>
-        <VerticalTimeline>
+      <div ref={timelineRoot} className='experience-timeline mt-20 flex flex-col'>
+        <VerticalTimeline animate={false}>
           {experiences.map((experience, index) => (
             <ExperienceCard
               key={`experience-${index}`}

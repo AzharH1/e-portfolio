@@ -1,11 +1,24 @@
-import { motion } from "framer-motion";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+  const hero = useRef();
+  const reducedMotion = useReducedMotion();
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(hero.current.querySelectorAll("h1, p"), {
+        y: 24, opacity: 0, duration: 0.8, stagger: 0.16, ease: "power3.out", clearProps: "all",
+      });
+    });
+    return () => media.revert();
+  }, []);
   return (
-    <section className={`relative w-full h-screen min-h-[720px] mx-auto`}>
+    <section ref={hero} className={`relative w-full h-screen min-h-[720px] mx-auto`}>
       <div
         className={`absolute z-10 pointer-events-none inset-x-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -24,7 +37,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 top-[340px] bottom-[120px] sm:top-[320px]" aria-label="Interactive neural network">
+      <div className="absolute inset-x-0 top-[290px] bottom-[120px] sm:top-[320px]" aria-label="Interactive neural network">
         <ComputersCanvas />
       </div>
 
@@ -35,7 +48,7 @@ const Hero = () => {
           <div className='h-[48px] w-[28px] rounded-full border-2 border-secondary flex justify-center items-start p-1.5'>
             <motion.div
               animate={{
-                y: [0, 18, 0],
+                y: reducedMotion ? 0 : [0, 18, 0],
                 
               }}
               transition={{
