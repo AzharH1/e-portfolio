@@ -1,3 +1,4 @@
+import AnimatedHeading from "./AnimatedHeading";
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -73,7 +74,7 @@ const Contact = () => {
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
         <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <AnimatedHeading variant="contact" as="h3">Contact.</AnimatedHeading>
 
         <form
           ref={formRef}

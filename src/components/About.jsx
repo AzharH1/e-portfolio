@@ -1,3 +1,4 @@
+import AnimatedHeading from "./AnimatedHeading";
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,7 +9,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => {
   const card = useRef();
@@ -67,10 +68,10 @@ const ServiceCard = ({ index, title, icon }) => {
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <div>
         <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
-      </motion.div>
+        <AnimatedHeading variant="overview">Overview.</AnimatedHeading>
+      </div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}

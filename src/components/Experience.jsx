@@ -1,3 +1,4 @@
+import AnimatedHeading from "./AnimatedHeading";
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,14 +8,12 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
 
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -71,11 +70,26 @@ const Experience = () => {
   const timelineRoot = useRef();
   useLayoutEffect(() => {
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add({
+      motion: "(prefers-reduced-motion: no-preference)",
+      wide: "(min-width: 1170px)",
+    }, ({ conditions }) => {
+      if (!conditions.motion) return;
       const timeline = timelineRoot.current.querySelector(".vertical-timeline");
       gsap.fromTo(timeline, { "--line-progress": 0 }, {
         "--line-progress": 1, ease: "none",
         scrollTrigger: { trigger: timeline, start: "top 65%", end: "bottom 65%", scrub: true, invalidateOnRefresh: true },
+      });
+      timeline.querySelectorAll(".vertical-timeline-element").forEach((element, index) => {
+        const card = element.querySelector(".vertical-timeline-element-content");
+        gsap.from(card, {
+          x: conditions.wide ? (index % 2 === 0 ? -64 : 64) : 24,
+          opacity: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: { trigger: element, start: "top 88%", once: true },
+        });
       });
       timeline.querySelectorAll(".vertical-timeline-element-icon").forEach((icon) => {
         gsap.fromTo(icon, { boxShadow: "0 0 0 4px #354A44" }, {
@@ -88,14 +102,12 @@ const Experience = () => {
   }, []);
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <div>
         <p className={`${styles.sectionSubText} text-center`}>
           What I have done so far
         </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
-        </h2>
-      </motion.div>
+        <AnimatedHeading variant="experience" className="text-center">Work Experience.</AnimatedHeading>
+      </div>
 
       <div ref={timelineRoot} className='experience-timeline mt-8 min-[1170px]:mt-20 flex flex-col'>
         <VerticalTimeline animate={false}>

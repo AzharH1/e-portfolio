@@ -259,3 +259,6 @@
 
 .story-letter { display: inline-block; }
 .story-art { pointer-events: all; }
+
+/* Contain timeline entrances without creating horizontal page scrolling. */
+.experience-timeline { overflow-x: clip; padding-inline: 6px; }
