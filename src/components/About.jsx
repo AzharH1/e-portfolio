@@ -80,7 +80,7 @@ const About = () => {
         I’m a software engineer building reliable web experiences and AI tools that help engineers work more effectively. My work spans product development, performance, security and technical leadership. I deliver features, investigate production issues and build tools for AI-assisted development and testing. I enjoy taking projects from idea to delivery, bringing teams together and helping other engineers grow.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className='mt-20 flex flex-wrap justify-center gap-10'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
