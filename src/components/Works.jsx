@@ -19,6 +19,8 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  last_updated,
+  latest_commit_link,
 }) => {
   const card = useRef();
   useLayoutEffect(() => {
@@ -79,6 +81,12 @@ const ProjectCard = ({
 
         <div className='mt-5'>
           <h3 className='text-white font-bold text-[24px]'>{name}</h3>
+          {last_updated && (
+            <a href={latest_commit_link} target="_blank" rel="noopener noreferrer"
+              className="mt-2 inline-block text-xs text-[#67DDB5] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67DDB5]">
+              Last repository update: <time dateTime={last_updated}>{new Intl.DateTimeFormat('en-AU', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Australia/Sydney' }).format(new Date(last_updated))}</time>
+            </a>
+          )}
           <p className='mt-2 text-secondary text-[14px]'>{description}</p>
         </div>
 

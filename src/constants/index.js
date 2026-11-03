@@ -241,6 +241,8 @@ const projects = [
     ],
     image: fullStack,
     source_code_link: "https://github.com/AzharH1/AzSecurity",
+    last_updated: "2024-03-20T00:58:12Z",
+    latest_commit_link: "https://github.com/AzharH1/AzSecurity/commit/cdef8fccfceee5d7c7026f2baea25eb5f5a00be4",
   },
   {
     name: "Apple Store",
@@ -262,6 +264,8 @@ const projects = [
     ],
     image: applestore,
     source_code_link: "https://github.com/AzharH1/AppleWebsite",
+    last_updated: "2023-04-12T16:05:57Z",
+    latest_commit_link: "https://github.com/AzharH1/AppleWebsite/commit/5f8e0e5bdf5d67dc112f5c00c25fb4476e016524",
   },
   {
     name: "Twitter Clone",
@@ -283,6 +287,8 @@ const projects = [
     ],
     image: twitter,
     source_code_link: "https://github.com/AzharH1/Twitter-Clone",
+    last_updated: "2023-04-07T15:01:55Z",
+    latest_commit_link: "https://github.com/AzharH1/Twitter-Clone/commit/ed1a2f6f5bb7083fc71920b9467742d92703c937",
   },
 ];
 
