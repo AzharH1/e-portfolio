@@ -253,25 +253,11 @@
   * { scroll-behavior: auto; }
 }
 
+/* Paint progress over a permanent rail, leaving the timeline clearfix intact. */
 .experience-timeline .vertical-timeline::before {
-  background: #354A44;
-}
-.experience-timeline .vertical-timeline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 18px;
-  height: 100%;
-  width: 4px;
-  background: #67DDB5;
-  transform: scaleY(var(--line-progress, 1));
-  transform-origin: top;
-  pointer-events: none;
+  background: linear-gradient(#67DDB5, #67DDB5) top / 100% calc(100% * var(--line-progress, 1)) no-repeat #527269;
 }
 .experience-timeline .vertical-timeline-element { z-index: 1; }
-@media (min-width: 1170px) {
-  .experience-timeline .vertical-timeline::after { left: 50%; margin-left: -2px; }
-}
 
 @media (max-width: 1169px) {
   .experience-timeline .vertical-timeline { padding-top: 0.5rem; }
@@ -308,3 +294,11 @@
 
 /* Contain timeline entrances without creating horizontal page scrolling. */
 .experience-timeline { overflow-x: clip; padding-inline: 6px; }
+
+.planet-fallback {
+  margin: auto;
+  width: min(75%, 320px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #67DDB5, #263D39 45%, #0B1215 78%);
+}

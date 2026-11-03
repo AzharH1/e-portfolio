@@ -84,7 +84,7 @@ const Experience = () => {
         const card = element.querySelector(".vertical-timeline-element-content");
         gsap.from(card, {
           x: conditions.wide ? (index % 2 === 0 ? -64 : 64) : 24,
-          opacity: 0,
+          immediateRender: false,
           duration: 0.85,
           ease: "power3.out",
           clearProps: "transform,opacity",

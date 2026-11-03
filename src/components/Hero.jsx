@@ -155,8 +155,8 @@ export default function Hero() {
       sequence.to({}, { duration: 0.35 });
       for (let scene = 1; scene < 4; scene++) {
         const at = (scene - 1) * 1.6 + 0.35;
-        sequence.to(panels[scene - 1], { autoAlpha: 0, y: -30, duration: 0.35 }, at);
-        sequence.fromTo(panels[scene], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55 }, at + 0.3);
+        sequence.to(panels[scene - 1], { autoAlpha: 0, y: -30, duration: 0.35, ease: "none" }, at);
+        sequence.fromTo(panels[scene], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "none" }, at);
         points.forEach((point, i) => sequence.to(point, { ...layouts[scene][i], duration: 0.95, ease: "power2.inOut" }, at + i * 0.018));
         sequence.to(wires, { opacity: scene === 1 ? 0.5 : 0, duration: 0.5 }, at + 0.3);
         sequence.to(scope.querySelector('.story-shield'), { opacity: scene === 2 ? 1 : 0, duration: 0.5 }, at + 0.55);

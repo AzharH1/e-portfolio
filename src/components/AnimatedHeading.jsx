@@ -12,13 +12,13 @@ export default function AnimatedHeading({ children, variant, className = "", as:
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const letters = root.current.querySelectorAll('.section-letter');
       const entrance = {
-        overview: { yPercent: 105, rotation: 5, stagger: 0.045 },
-        experience: { opacity: 0, x: -12, stagger: 0.025 },
-        projects: { opacity: 0, scale: 0.65, rotation: -8, stagger: 0.04 },
-        contact: { opacity: 0, y: 16, stagger: { each: 0.06, from: 'center' } },
+        overview: { y: 10, rotation: 5, stagger: 0.045 },
+        experience: { x: -12, stagger: 0.025 },
+        projects: { scale: 0.9, rotation: -8, stagger: 0.04 },
+        contact: { y: 12, stagger: { each: 0.06, from: 'center' } },
       }[variant];
       gsap.from(letters, {
-        ...entrance, duration: 0.65, ease: 'power3.out', clearProps: 'all',
+        ...entrance, immediateRender: false, duration: 0.65, ease: 'power3.out', clearProps: 'all',
         scrollTrigger: { trigger: root.current, start: 'top 90%', once: true },
       });
     });
