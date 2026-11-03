@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 
-import { BallCanvas } from "./canvas";
+import DeferredScene from "./DeferredScene";
+const BallCanvas = lazy(() => import("./canvas/Ball"));
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 
@@ -34,7 +35,7 @@ const Tech = () => {
 const TheTechBalls = technology => {
   return (
   <div className='w-28 h-28' key={technology.name}>
-          <BallCanvas icon={technology.icon} />
+          <DeferredScene><BallCanvas icon={technology.icon} /></DeferredScene>
   </div>)
 }
 

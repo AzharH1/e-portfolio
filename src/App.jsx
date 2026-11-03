@@ -1,6 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { lazy } from "react";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Tech from "./components/Tech";
+import Works from "./components/Works";
+import DeferredScene from "./components/DeferredScene";
+const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
 
 const App = () => {
   return (
@@ -17,7 +26,7 @@ const App = () => {
         {/* <Feedbacks /> */}
         <div className='relative z-0'>
           <Contact />
-          <StarsCanvas />
+          <DeferredScene className="absolute inset-0 z-[-1]"><StarsCanvas /></DeferredScene>
         </div>
       </div>
     </BrowserRouter>
