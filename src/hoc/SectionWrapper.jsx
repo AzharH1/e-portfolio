@@ -13,9 +13,9 @@ const StarWrapper = (Component, idName) =>
         viewport={{ once: true, amount: "some" }}
         className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
       >
-        <span className='hash-span' id={idName}>
+        {idName !== undefined && <span className='hash-span' id={idName || undefined}>
           &nbsp;
-        </span>
+        </span>}
 
         <Component />
       </motion.section>
