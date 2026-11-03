@@ -1,57 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter } from "react-router-dom";
 
-const Arrow = () => <span aria-hidden="true">↗</span>;
-const tags = ['TypeScript', 'React', 'Python', 'SQL', 'Playwright', 'Service workers'];
+import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 
-function OfflineDemo() {
-  const [online, setOnline] = useState(true);
-  const [local, setLocal] = useState(3);
-  const [remote, setRemote] = useState(3);
-  const [colour, setColour] = useState(0);
-  const pending = local - remote;
-  function add() { setLocal(local + 1); if (online) setRemote(local + 1); setColour((colour + 1) % 3); }
-  function toggle() { if (!online) setRemote(local); setOnline(!online); }
-  return <div className="offline-demo">
-    <div className="demo-toolbar"><span className="mono">FIELD NOTE / 01</span><span className={'status ' + (!online ? 'paused' : '')}><i />{online ? 'Connected' : 'Offline'}</span></div>
-    <div className={'artboard art-' + colour} aria-label="Illustrative editable poster"><span className="poster-caption">IDEAS DON’T NEED A SIGNAL.</span><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><span className="poster-title">Keep<br/>creating<span>.</span></span><span className="poster-footer">LOCAL FIRST. ALWAYS YOURS. <span>0{local}</span></span></div>
-    <div className="demo-controls"><button onClick={toggle} className="button small">{online ? 'Disconnect' : 'Reconnect'} <span aria-hidden="true">{online ? '↯' : '↗'}</span></button><button onClick={add} className="button small light">Edit the poster <span aria-hidden="true">+</span></button></div>
-    <div className="sync-state" aria-live="polite"><span><i className="dot"/> Device <strong>v{local}</strong></span><span className="sync-line">{pending ? `${pending} queued` : 'in sync'} →</span><span>Cloud <strong>v{remote}</strong></span></div>
-    <p className="demo-note">Try disconnecting, making a few edits, then reconnecting. A browser-only simulation of an offline queue—not a Canva product demo.</p>
-    <button className="text-button" onClick={()=>{setOnline(true);setLocal(3);setRemote(3);setColour(0)}}>Reset experiment ↺</button>
-  </div>;
+const App = () => {
+  return (
+    <BrowserRouter>
+      <div className='relative z-0 bg-primary'>
+        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+          <Navbar />
+          <Hero />
+        </div>
+        <About />
+        <Experience />
+        <Tech />
+        <Works />
+        {/* <Feedbacks /> */}
+        <div className='relative z-0'>
+          <Contact />
+          <StarsCanvas />
+        </div>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-function AIDemo() {
-  const [scenario,setScenario]=useState('clean');
-  const [step,setStep]=useState(-1);
-  const [running,setRunning]=useState(false);
-  const timer=useRef();
-  useEffect(()=>()=>clearInterval(timer.current),[]);
-  const steps=['Understand the change','Plan the offline journeys','Run & compare with baseline','Classify the result'];
-  const results={clean:['Verified','All illustrative journeys passed.'],product:['Product regression','The changed build fails; the baseline passes. Route to engineering.'],harness:['Test environment issue','Both builds fail in the same way. Investigate the harness before blaming the change.']};
-  function run(){clearInterval(timer.current);setStep(0);setRunning(true);let next=0;timer.current=setInterval(()=>{next++;setStep(next);if(next===4){clearInterval(timer.current);setRunning(false)}},650)}
-  return <div className="ai-demo"><div className="demo-toolbar"><span className="mono">FIELD NOTE / 02</span><span className="mono">ILLUSTRATIVE WORKFLOW</span></div>
-    <h3>A verdict needs evidence.</h3><p>Explore how a verification workflow separates a code regression from a broken test environment.</p>
-    <label htmlFor="scenario">Choose a test outcome</label><select id="scenario" value={scenario} disabled={running} onChange={e=>{setScenario(e.target.value);setStep(-1)}}><option value="clean">The change works</option><option value="product">The change introduces a bug</option><option value="harness">The test environment breaks</option></select>
-    <ol className="pipeline">{steps.map((s,i)=><li key={s} className={step>i?'complete':step===i?'active':''}><span>{step>i?'✓':`0${i+1}`}</span>{s}<span className="pipeline-end">{step>i?'done':step===i?'running':'—'}</span></li>)}</ol>
-    <div className={'verdict '+(step===4?scenario:'')} aria-live="polite">{step===4?<><strong>{results[scenario][0]}</strong><span>{results[scenario][1]}</span></>:<span>{running?'Following the evidence…':'Choose a scenario. Follow the evidence.'}</span>}</div>
-    <button className="button" disabled={running} onClick={run}>{running?'Running the simulation…':step===4?'Run again':'Run verification'} <span aria-hidden="true">→</span></button><p className="demo-note">Deterministic simulation. No AI service, account or paid API is used.</p>
-  </div>;
-}
-
-const work = [
-  {n:'01',label:'PRODUCT & PERFORMANCE',title:'Make the wait disappear.',body:'Led technical delivery of Canva’s Offline Designs page and onboarding. Investigated startup delays, improved the loading sequence and aligned analytics with when designs actually become visible.',metric:'5.4s → 1.0s',detail:'Time to first design cards · controlled browser benchmark',extra:'The engineering decision: start the local design read earlier, then measure the moment results paint. The benchmark is a controlled comparison, not a claim of a site-wide production speedup.'},
-  {n:'02',label:'AI ENGINEERING',title:'Give coding agents a better map.',body:'Built CodeAtlas, a Python and SQLite code knowledge graph that helps coding agents navigate a monorepo with branch-aware structure and bounded retrieval.',metric:'45min → 86s',detail:'Repository sync · development benchmark',extra:'Optimised database operations and bounded retrieval. Queries improved from 24 seconds to 0.5 seconds in development benchmarks. The goal: useful context with less repeated searching.'},
-  {n:'03',label:'TECHNICAL LEADERSHIP',title:'Move the work. Grow the team.',body:'Led technical scoping for storage monitoring, coordinated product, design and engineering, and adapted scope when cross-team dependencies changed. Prototyped native storage bridges in Swift and Kotlin.',metric:'5 engineers',detail:'Onboarded into offline development',extra:'My leadership is hands-on: technical proposals, mentoring, code review and incident coordination. The native bridges were prototypes; I distinguish them from shipped product work.'},
-];
-
-export default function App(){
-  const [menu,setMenu]=useState(false);
-  return <><a className="skip-link" href="#main">Skip to content</a><header><a href="#" className="wordmark" aria-label="Azhar Hossain home">ah<span>·</span></a><span className="nav-caption">AZHAR HOSSAIN<br/>SOFTWARE ENGINEER</span><button className="menu-toggle" aria-expanded={menu} aria-controls="navigation" onClick={()=>setMenu(!menu)}>{menu?'Close −':'Menu +'}</button><nav id="navigation" className={menu?'open':''}>{[['work','Selected work'],['lab','The playground'],['about','About']].map(([id,label])=><a key={id} href={'#'+id} onClick={()=>setMenu(false)}>{label}</a>)}<a href="#contact" className="nav-contact" onClick={()=>setMenu(false)}>Let’s talk <Arrow/></a></nav></header>
-  <main id="main"><section className="hero"><div className="hero-copy"><div className="eyebrow"><i className="dot"/> BUILDING AT CANVA · SYDNEY</div><h1>Good software.<br/>Thoughtfully built.<br/><em>Ready for reality.</em></h1><p className="hero-intro">I’m Azhar. I build web experiences and AI developer tools, lead technical projects, and make things work when the happy path ends.</p><div className="hero-actions"><a className="button" href="#work">Explore my work <span>↓</span></a><a className="quiet-link" href="https://github.com/AzharH1" target="_blank" rel="noreferrer">GitHub <Arrow/></a></div><div className="hero-footnote"><span>SOFTWARE ENGINEERING</span><span>AI & DEVELOPER TOOLS</span><span>TECHNICAL LEADERSHIP</span></div></div><div className="hero-experiment"><div className="experiment-label"><span>Less “look at my website”.</span><span>More “try how it works”. <span aria-hidden="true">↙</span></span></div><OfflineDemo/></div></section>
-  <section id="work" className="work-section"><div className="section-heading"><div><span className="eyebrow">01 / SELECTED WORK</span><h2>Built with purpose.<br/>Backed by evidence.</h2></div><p>Current work as a Performance Software Engineer at Canva, January 2025–present. A few things I’ve helped move forward.</p></div><div className="work-list">{work.map(w=><article className="work-row" key={w.n}><span className="work-number">{w.n}</span><div className="work-story"><span className="eyebrow">{w.label}</span><h3>{w.title}</h3><p>{w.body}</p><details><summary>Behind the work <span>+</span></summary><p>{w.extra}</p></details></div><div className="work-metric"><strong>{w.metric}</strong><span>{w.detail}</span></div></article>)}</div><div className="security-strip"><span className="security-icon" aria-hidden="true">◇</span><div><span className="eyebrow">RELIABILITY & SECURITY ARE PART OF THE JOB</span><h3>Build it. Support it. Make it safer.</h3><p>Led production incident responses, contributed to a separate Sev 1 response, remediated an application vulnerability with Application Security, and co-authored offline privacy guidance. Built automated memory monitoring with QA.</p></div></div></section>
-  <section id="lab" className="lab-section"><div className="lab-copy"><span className="eyebrow">02 / THE PLAYGROUND</span><h2>Useful AI starts<br/>with better<br/> <em>questions.</em></h2><p>I build tools that help engineers investigate, test and make decisions. A convincing answer isn’t enough; the result needs evidence.</p><p>My work includes a Playwright-based change-verification platform, agent skills for bug triage and technical documentation, evaluation suites, and an analyst interface for an AI-assisted security triage hackathon.</p><div className="lab-note"><span aria-hidden="true">↳</span><span>This small simulation shows one of those ideas: a failed test doesn’t automatically mean broken product code.</span></div></div><AIDemo/></section>
-  <section className="projects-section"><div className="section-heading"><div><span className="eyebrow">03 / OUTSIDE THE DAY JOB</span><h2>Things I’ve made.</h2></div><a className="quiet-link" href="https://github.com/AzharH1" target="_blank" rel="noreferrer">Explore GitHub <Arrow/></a></div><div className="project-grid"><a className="project" href="https://github.com/AzharH1/AzSecurity" target="_blank" rel="noreferrer"><div className="project-graphic security-graphic" aria-hidden="true"><span>{'{'}<b>auth</b>{'}'}</span><small>REQUEST → VERIFY → ACCESS</small></div><div className="project-title"><h3>AzSecurity</h3><Arrow/></div><p>A full-stack application exploring authentication and secure application design.</p><span className="mono">SPRING BOOT / NEXT.JS / POSTGRESQL</span></a><a className="project" href="https://github.com/AzharH1/Chat-GPT-Clone" target="_blank" rel="noreferrer"><div className="project-graphic chat-graphic" aria-hidden="true"><span>What if…</span><span>Let’s build it.<i>▌</i></span></div><div className="project-title"><h3>AI chat application</h3><Arrow/></div><p>Exploring conversational interfaces with streaming responses and persistent conversation history.</p><span className="mono">OPENAI & CLAUDE APIs / WEB UI</span></a></div></section>
-  <section id="about" className="about-section"><div><span className="eyebrow">04 / A LITTLE ABOUT ME</span><h2>Hands on.<br/>Eyes on the<br/> <em>bigger picture.</em></h2></div><div className="about-copy"><p>I like the space between a good idea and a dependable product. That’s where the interesting work happens: understanding the problem, choosing the trade-offs, and bringing people along.</p><p>I returned to Canva after my 2023–24 internship, where I built a React and TypeScript Chrome extension for inspecting service workers and browser caches. Today, my work connects product engineering, AI tooling, technical leadership and security.</p><p>I’m interested in software and AI engineering, technical leadership, and opportunities to grow into engineering management.</p><div className="skill-list">{tags.map(t=><span key={t}>{t}</span>)}</div><a className="quiet-link" href="https://www.linkedin.com/in/azhar-hossain/" target="_blank" rel="noreferrer">The full story on LinkedIn <Arrow/></a></div></section>
-  <section id="contact" className="contact-section"><span className="eyebrow">HAVE SOMETHING IN MIND?</span><h2>Let’s build<br/>something <em>worthwhile.</em></h2><a className="contact-email" href="mailto:Azhar.hossain73@gmail.com">Azhar.hossain73@gmail.com <Arrow/></a><div className="contact-bottom"><span>Based in Sydney, Australia.</span><a href="https://www.linkedin.com/in/azhar-hossain/" target="_blank" rel="noreferrer">LinkedIn <Arrow/></a><a href="https://github.com/AzharH1" target="_blank" rel="noreferrer">GitHub <Arrow/></a></div></section></main><footer><span>© {new Date().getFullYear()} Azhar Hossain</span><span>Built with intention. Still experimenting.</span><a href="#">Back to top ↑</a></footer></>;
-}
+export default App;
