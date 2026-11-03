@@ -59,10 +59,7 @@
   color-scheme: dark;
 }
 
-.section-intro { scroll-margin-top: 100px; }
-@media (min-width: 640px) {
-  .section-intro { scroll-margin-top: 92px; }
-}
+.section-intro { scroll-margin-top: calc(var(--nav-height, 0px) + 1rem); }
 
 .hash-span {
   margin-top: -100px;
