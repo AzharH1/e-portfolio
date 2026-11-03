@@ -1,5 +1,8 @@
-import React from "react";
-import Tilt from "react-tilt";
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -16,34 +19,60 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
+  const card = useRef();
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const root = card.current;
+      gsap.from(root, {
+        y: 40, opacity: 0, duration: 0.8, ease: "power3.out",
+        clearProps: "transform,opacity",
+        scrollTrigger: { trigger: root, start: "top 92%", once: true },
+      });
+      const image = root.querySelector(".project-image");
+      const zoom = gsap.quickTo(image, "scale", { duration: 0.55, ease: "power2.out" });
+      const enter = () => zoom(1.06);
+      const leave = () => zoom(1);
+      const pointer = (event) => { if (event.pointerType === "mouse") enter(); };
+      root.addEventListener("pointerenter", pointer);
+      root.addEventListener("pointerleave", leave);
+      root.addEventListener("focusin", enter);
+      root.addEventListener("focusout", leave);
+      return () => {
+        root.removeEventListener("pointerenter", pointer);
+        root.removeEventListener("pointerleave", leave);
+        root.removeEventListener("focusin", enter);
+        root.removeEventListener("focusout", leave);
+      };
+    });
+    return () => media.revert();
+  }, []);
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
+    <div ref={card} className="sm:w-[360px] w-full">
+      <div
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
       >
-        <div className='relative w-full h-[230px]'>
+        <div className='relative w-full h-[230px] overflow-hidden rounded-2xl'>
           <img
             src={image}
-            alt='project_image'
-            className='w-full h-full object-cover rounded-2xl'
+            alt={`${name} project preview`}
+            className='project-image w-full h-full object-cover rounded-2xl'
           />
 
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+            <a
+              href={source_code_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${name} source code`}
+              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67DDB5]'
             >
               <img
                 src={github}
-                alt='source code'
+                alt=''
                 className='w-1/2 h-1/2 object-contain'
               />
-            </div>
+            </a>
           </div>
         </div>
 
@@ -62,8 +91,8 @@ const ProjectCard = ({
             </p>
           ))}
         </div>
-      </Tilt>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

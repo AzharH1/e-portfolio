@@ -19,6 +19,7 @@ import { textVariant } from "../utils/motion";
 const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
+      visible
       contentStyle={{
         background: "#152126",
         color: "#fff",
@@ -96,7 +97,7 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      <div ref={timelineRoot} className='experience-timeline mt-20 flex flex-col'>
+      <div ref={timelineRoot} className='experience-timeline mt-8 min-[1170px]:mt-20 flex flex-col'>
         <VerticalTimeline animate={false}>
           {experiences.map((experience, index) => (
             <ExperienceCard

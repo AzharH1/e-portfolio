@@ -226,3 +226,7 @@
 @media (min-width: 1170px) {
   .experience-timeline .vertical-timeline::after { left: 50%; margin-left: -2px; }
 }
+
+@media (max-width: 1169px) {
+  .experience-timeline .vertical-timeline { padding-top: 0.5rem; }
+}
