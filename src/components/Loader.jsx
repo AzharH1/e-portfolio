@@ -1,30 +1,14 @@
-import { Html, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
 
+// Keep loading UI in the main React tree, outside the WebGL Suspense root.
 const CanvasLoader = () => {
-  const { progress } = useProgress();
+  const { active, progress } = useProgress();
+  if (!active) return null;
   return (
-    <Html
-      as='div'
-      center
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <span className='canvas-loader'></span>
-      <p
-        style={{
-          fontSize: 14,
-          color: "#F1F1F1",
-          fontWeight: 800,
-          marginTop: 40,
-        }}
-      >
-        {progress.toFixed(2)}%
-      </p>
-    </Html>
+    <div role="status" aria-label="Loading 3D scene" className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
+      <span className="canvas-loader" />
+      <p className="mt-10 text-sm font-extrabold text-[#F1F1F1]">{progress.toFixed(2)}%</p>
+    </div>
   );
 };
 
