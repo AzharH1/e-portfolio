@@ -4,13 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn } from "../utils/motion";
 
 const ProjectCard = ({
   index,
@@ -28,9 +26,9 @@ const ProjectCard = ({
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const root = card.current;
       gsap.from(root, {
-        y: 40, opacity: 0, duration: 0.8, ease: "power3.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: { trigger: root, start: "top 92%", once: true },
+        y: 12, immediateRender: false, duration: 0.5, ease: "power3.out",
+        clearProps: "transform",
+        scrollTrigger: { trigger: root, start: "top bottom", once: true },
       });
       const image = root.querySelector(".project-image");
       const zoom = gsap.quickTo(image, "scale", { duration: 0.55, ease: "power2.out" });
@@ -114,12 +112,11 @@ const Works = () => {
       </div>
 
       <div className='w-full flex'>
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+        <p
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
           The projects presented below highlight my proficiency and practical experience in various aspects of software development. Each project includes a concise description, as well as links to code repositories and live demonstrations. These projects demonstrate my capacity to tackle intricate challenges, utilize diverse technologies, and successfully manage projects from inception to completion.
-        </motion.p>
+        </p>
       </div>
 
       <div className='mt-20 flex flex-wrap gap-7'>
