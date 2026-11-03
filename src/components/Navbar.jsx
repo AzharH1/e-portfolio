@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        styles.paddingX
+        "px-4 sm:px-16"
       } w-full flex items-center py-5 fixed top-0 z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
@@ -63,37 +62,16 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain'
-            onClick={() => setToggle(!toggle)}
-          />
-
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <ul className="sm:hidden flex items-center gap-1 list-none" aria-label="Main navigation">
+          {navLinks.map((nav) => (
+            <li key={nav.id}>
+              <a href={`#${nav.id}`} onClick={() => setActive(nav.title)}
+                className={`flex min-h-[44px] items-center px-2 rounded-full text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67DDB5] ${active === nav.title ? "text-[#67DDB5] bg-tertiary" : "text-secondary"}`}>
+                {nav.title}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
