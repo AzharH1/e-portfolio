@@ -9,7 +9,7 @@ export default function AnimatedHeading({ children, variant, className = "", as:
   const root = useRef();
   useLayoutEffect(() => {
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
       const letters = root.current.querySelectorAll('.section-letter');
       const entrance = {
         overview: { y: 10, rotation: 5, stagger: 0.045 },

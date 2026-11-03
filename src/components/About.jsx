@@ -4,12 +4,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => {
   const card = useRef();
@@ -17,7 +15,7 @@ const ServiceCard = ({ index, title, icon }) => {
   const glow = useRef();
   useLayoutEffect(() => {
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
       gsap.from(card.current, {
         y: 46, opacity: 0, duration: 0.8,
         delay: window.matchMedia("(min-width: 1024px)").matches ? index * 0.12 : 0,
@@ -73,12 +71,11 @@ const About = () => {
         <AnimatedHeading variant="overview">Overview.</AnimatedHeading>
       </div>
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
+      <p
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
         I’m a software engineer building reliable web experiences and AI tools that help engineers work more effectively. My work spans product development, performance, security and technical leadership. I deliver features, investigate production issues and build tools for AI-assisted development and testing. I enjoy taking projects from idea to delivery, bringing teams together and helping other engineers grow.
-      </motion.p>
+      </p>
 
       <div className='mt-20 flex flex-wrap justify-center gap-10'>
         {services.map((service, index) => (
