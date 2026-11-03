@@ -166,7 +166,7 @@ const experiences = [
     company_name: "JB HI-FI",
     icon: jbhifi,
     iconBg: "#E6DEDD",
-    date: "Jan 2022 - Present",
+    date: "June 2022 - January 2025",
     points: [
       "Communicating with customers and recommending relevant IT solutions.",
       "Responded to customer requests and direct them to relevant departments both on and off prem.",
@@ -179,7 +179,7 @@ const experiences = [
     company_name: "Woolworths",
     icon: WoolworthsD,
     iconBg: "#383E56",
-    date: "Jan 2022 - Present",
+    date: "January 2022 - June 2026",
     points: [
       "Coordinated restocking of sales floor with current merchandise and accurate signage for current promotions.",
       "Approached browsing customers to initiate conversations to determine buying preferences.",
