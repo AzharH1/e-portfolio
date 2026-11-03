@@ -56,7 +56,7 @@ const ProjectCard = ({
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
       >
         <div className='relative w-full h-[230px] overflow-hidden rounded-2xl'>
-          <img
+          <img loading="lazy" decoding="async"
             src={image}
             alt={`${name} project preview`}
             className='project-image w-full h-full object-cover rounded-2xl'
@@ -70,7 +70,7 @@ const ProjectCard = ({
               aria-label={`View ${name} source code`}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#67DDB5]'
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={github}
                 alt=''
                 className='w-1/2 h-1/2 object-contain'

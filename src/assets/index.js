@@ -1,9 +1,9 @@
 import logo from "./Logo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
-import github from "./github.png";
+import backend from "./optimized/backend.webp";
+import creator from "./optimized/creator.webp";
+import mobile from "./optimized/mobile.webp";
+import web from "./optimized/web.webp";
+import github from "./optimized/github.webp";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -22,15 +22,15 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
 import meta from "./company/meta.png";
-import frontendSimplified from "./company/frontendSimplified.png";
-import WoolworthsD from "./company/WoolworthsD.png";
-import jbhifi from "./company/jbhifi3.png";
+import frontendSimplified from "./optimized/frontendSimplified.webp";
+import WoolworthsD from "./optimized/WoolworthsD.webp";
+import jbhifi from "./optimized/jbhifi3.webp";
 import canvaLogo from "./company/circleCanvaLogoGradient.svg";
 
-import applestore from "./applestore.png";
+import applestore from "./optimized/applestore.webp";
 import discord from "./discord.png";
-import fullStack from "./fullstack.png";
-import twitter from "./twitter.png";
+import fullStack from "./optimized/fullstack.webp";
+import twitter from "./optimized/twitter.webp";
 
 export {
   logo,

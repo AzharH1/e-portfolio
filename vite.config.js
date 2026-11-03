@@ -5,6 +5,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     manifest: true,
+    // Keep images as cacheable files so lazy loading also defers their bytes.
+    assetsInlineLimit: 0,
     rolldownOptions: {
       output: {
         codeSplitting: {

@@ -56,7 +56,7 @@ const ServiceCard = ({ index, title, icon }) => {
     <div ref={card} className="xs:w-[250px] w-full" style={{ perspective: "850px" }}>
       <div ref={surface} className="relative w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card overflow-hidden">
         <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-          <img src={icon} alt="" className="w-16 h-16 object-contain" />
+          <img loading="lazy" decoding="async" src={icon} alt="" className="w-16 h-16 object-contain" />
           <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
         </div>
         <div ref={glow} aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-0 rounded-[20px]" />
