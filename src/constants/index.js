@@ -44,19 +44,19 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Frontend Engineer",
+    title: "Software Engineering",
     icon: web,
   },
   {
-    title: "Cloud Engineer",
+    title: "AI Engineering",
     icon: mobile,
   },
   {
-    title: "Backend Engineer",
+    title: "Security & Reliability",
     icon: backend,
   },
   {
-    title: "Solutions Architect",
+    title: "Technical Leadership",
     icon: creator,
   },
 ];
@@ -118,17 +118,34 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Software Engineer Internship",
+    title: "Performance Engineer",
+    company_name: "Canva",
+    icon: canvaLogo,
+    iconBg: "#383E56",
+    date: "January 2025 - Present",
+    points: [
+      "Led technical delivery of web pages and onboarding experiences, including reusable components, offline states, localisation, analytics and staged releases.",
+      "Improved page startup, reducing the time to display designs from 5.4 seconds to 1.0 second.",
+      "Improved analytics accuracy by reducing duplicated tracking identifiers from approximately 34% of measured page loads to under 1%.",
+      "Built an AI-powered testing tool that checks software changes, investigates failures and helps generate code fixes.",
+      "Led technical scoping for platform storage monitoring and coordinated dependencies across engineering, product and design teams.",
+      "Remediated an application vulnerability with Application Security, authored offline privacy guidance, and led production incident responses and investigations.",
+      "Onboarded engineers, supported mentoring and code reviews, and developed AI agent skills for bug triage and technical documentation.",
+    ],
+  },
+  {
+    title: "Software Engineer Intern",
     company_name: "Canva",
     icon: canvaLogo,
     iconBg: "#383E56",
     date: "December 2023 - February 2024",
+    description: "Worked with Canva’s Offline team to build developer tooling for inspecting and testing service workers, browser caches and offline behaviour.",
     points: [
-      "Developed tools to investigate optimisation techniques to boost service worker operation, leading to enhanced performance and user experience",
-      "Provided better user experience by effectively redirecting requests to the cache or backend through the interception of network proxy requests by service workers",
-      "Leveraged RxJS for asynchronous programming, particularly for coordinating and managing events from service workers and the browser",
-      "Utilised React to create Chrome extensions and overlays for providing critical utilities and information to internal teams",
-      "Identified limitations and challenges in service worker management within the extension and created strategies to mitigate restrictions and enable functionality expansion in future iterations",
+      "Built a Chrome extension using TypeScript, React and Vite, giving engineers visibility into service worker registration, cache contents and page-cache behaviour.",
+      "Implemented communication between the webpage, service worker and extension through content scripts and shared message types.",
+      "Used RxJS to visualise page-cache events, helping engineers understand asynchronous behaviour and investigate offline issues.",
+      "Added controls for testing service worker updates, including triggering activation of a waiting worker.",
+      "Delivered more than 20 merged pull requests, incorporating feedback through code review and collaborating with the team on debugging and testing workflows.",
     ],
   },
   {

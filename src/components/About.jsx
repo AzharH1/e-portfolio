@@ -47,7 +47,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        As a proactive penultimate computer science student at the University of Technology Sydney, I excel in cloud development and cybersecurity. I've built a responsive website using React, TailwindCSS, Node.js, and Three.js, demonstrating my adaptability and skill in frontend and backend technologies. I specialize in creating visually captivating, responsive websites with immersive 3D experiences.
+        I’m a software engineer building reliable web experiences and AI tools that help engineers work more effectively. My work spans product development, performance, security and technical leadership. I deliver features, investigate production issues and build tools for AI-assisted development and testing. I enjoy taking projects from idea to delivery, bringing teams together and helping other engineers grow.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

@@ -42,6 +42,12 @@ const ExperienceCard = ({ experience }) => {
         </p>
       </div>
 
+      {experience.description && (
+        <p className='text-white-100 text-[14px] tracking-wider'>
+          {experience.description}
+        </p>
+      )}
+
       <ul className='mt-5 list-disc ml-5 space-y-2'>
         {experience.points.map((point, index) => (
           <li
