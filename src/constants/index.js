@@ -122,7 +122,7 @@ const experiences = [
     company_name: "Canva",
     icon: canvaLogo,
     iconBg: "#383E56",
-    date: "January 2025 - Present",
+    date: "June 2024 - Present",
     points: [
       "Led technical delivery of web pages and onboarding experiences, including reusable components, offline states, localisation, analytics and staged releases.",
       "Improved page startup, reducing the time to display designs from 5.4 seconds to 1.0 second.",
